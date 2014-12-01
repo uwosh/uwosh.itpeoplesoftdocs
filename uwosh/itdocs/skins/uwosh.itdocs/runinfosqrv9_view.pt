@@ -1,0 +1,158 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+<head><title>Run Information - SQR v9</title>
+<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 0.79in }
+		P { margin-bottom: 0.08in; font-size: 10pt}
+		H2 { margin-top: 0in; margin-bottom: 0in }
+		H2.western { font-family: "Nimbus Roman No9 L", serif; font-size: 10pt }
+		H2.cjk { font-family: "DejaVu Sans"; font-size: 10pt }
+		H2.ctl { font-family: "DejaVu Sans"; font-size: 10pt; font-weight: normal }
+	-->
+	</STYLE>
+</head>
+
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main"
+           tal:define="kssClassesView context/@@kss_field_decorator_view;
+                       getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
+                       templateId template/getId;">
+
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+        <h1 class="documentFirstHeading"> 
+            <metal:field use-macro="python:here.widget('title', mode='view')">
+            Title
+            </metal:field>
+        </h1>
+
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+        <p class="documentDescription">
+            
+        </p>
+
+        <span tal:repeat="fields context/getInterestedFields">
+            <label class="formQuestion" style="font=3">
+                <span tal:replace="python:fields.widget.label">Name</span>
+                <span>:</span>            
+            </label>
+            <span tal:condition="python: fields.getName() == 'operation'">
+                <div>From the menu, select:</div>
+            </span>
+
+            <br/>
+            <metal:field use-macro="python:here.widget( fields.getName() , mode='view')">
+            Title
+            </metal:field>
+            <br/>
+            <br/>
+            <span tal:condition="python: (fields.getName() == 'operation')" >
+            	<P STYLE="margin-bottom: 0in">Select a Run Control ID or create a new
+		one</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Enter any necessary parameters – See
+		Additional Information for specific parameter selection and
+		descriptions</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Select the process(es) to run – See
+		Addition Information for specific process descriptions</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Click on the Run button for the Process
+		Scheduler Request page.</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Ensure the Process Scheduler Request
+		page has these values:</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<UL>
+			<LI><P STYLE="margin-bottom: 0in">Server Name must be <B>PSUNX</B>.</P>
+			<LI><P STYLE="margin-bottom: 0in">Type must be <B>Web</B></P>
+			<LI><P STYLE="margin-bottom: 0in">Format should be <B>PDF</B></P>
+			<LI><P STYLE="margin-bottom: 0in">Distribution may be set but is
+			generally left blank</P>
+		</UL>
+		<P STYLE="margin-left: 0.5in; margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Click OK to submit the report to be
+		run.</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in"><FONT FACE="Arial, serif"><B>Process
+		Monitor Information:</B></FONT></P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">To view the status of any job you are
+		running:</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<H2 CLASS="western" STYLE="margin-left: 0.5in; font-size: 10pt">Home &gt; PeopleTools
+		&gt; Process Monitor <B>or select the</B> Process Monitor link <B>next
+		to the Run button</B> 
+		</H2>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Or click <U><B>Process Monitor</B></U>
+		from the Page you ran the process.</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Ensure the Process Monitor panel has
+		these values:</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<UL>
+			<LI><P STYLE="margin-bottom: 0in">Your <B>Operator ID</B> is in the
+			Operator ID box.</P>
+		</UL>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Click on <B>Refresh</B> to monitor the
+		progress of your job.</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">When the Run Status indicates <B>Success
+		(or Error) </B>and the Distribution Status indicates<B> Posted, </B>your
+		job has completed.</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Click the <B>Details</B> link next to
+		your process to view the output</P>
+		<P STYLE="margin-bottom: 0in">	Information for the run parameters
+		will be found by clicking the <B>Parameters</B> link</P>
+		<P STYLE="margin-left: 0.5in; margin-bottom: 0in">Information for the
+		run stats will be found by clicking the <B>Messages Log</B> link</P>
+		<P STYLE="margin-left: 0.5in; margin-bottom: 0in">Information for the
+		run stats will be found by clicking the <B>View Log/Trace</B> link
+		then click on the <B>SQR_&lt;process name&gt;_&lt;instance id&gt;.log</B>
+		file</P>
+		<P STYLE="margin-left: 0.5in; margin-bottom: 0in">Information for the
+		output from your process will be found by clicking the View Log/Trace
+		link then click on the <B>&lt;processname&gt;_&lt;instance id&gt;.out</B>
+		file 
+		</P>
+                <br/>    
+            </span>
+        </span>
+
+        <div>Information for the system is in the document:  _SystemInfo.doc</div>
+        
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+            
+        
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

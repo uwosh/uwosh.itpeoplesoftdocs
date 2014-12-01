@@ -1,0 +1,12 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    i18n_domain="uwosh.itdocs">
+
+   <!-- File System Directory Views registration -->
+	
+   <cmf:registerDirectory 
+			name="uwosh.itdocs"
+			directory="skins/uwosh.itdocs" />
+
+</configure>

@@ -1,0 +1,217 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+<head>
+<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 0.79in }
+		P { margin-bottom: 0.08in; font-size: 10pt}
+		H2 { margin-top: 0in; margin-bottom: 0in }
+		H2.western { font-family: "Nimbus Roman No9 L", serif; font-size: 10pt }
+		H2.cjk { font-family: "DejaVu Sans"; font-size: 10pt }
+		H2.ctl { font-family: "DejaVu Sans"; font-size: 10pt; font-weight: normal }
+	-->
+	</STYLE>
+</head>
+
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main"
+           tal:define="kssClassesView context/@@kss_field_decorator_view;
+                       getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
+                       templateId template/getId;">
+
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+        <h1 class="documentFirstHeading"> 
+            <metal:field use-macro="python:here.widget('title', mode='view')">
+            Title
+            </metal:field>
+        </h1>
+
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+        <p class="documentDescription">
+            
+        </p>
+
+        <span tal:repeat="fields context/getInterestedFields">
+            <label class="formQuestion" style="font=3">
+                <span tal:replace="python:fields.widget.label">Name</span>
+                <span>:</span>  
+                <br/>          
+            </label>
+
+            <span tal:condition="python: fields.getName() != 'operation'">
+                <metal:field use-macro="python:here.widget( fields.getName() , mode='view')">
+                Field
+                </metal:field>
+                <br/>
+                <br/>
+            </span>
+
+            <span tal:condition="python: (fields.getName() == 'operation')" >
+                <H2 CLASS="western" STYLE="background: #e0e0e0; font-size: 10pt">Run through Query
+		Report Scheduler for data sources of PS Query only</H2>
+		<H1 CLASS="western"><BR>
+		</H1>
+		<P STYLE="margin-bottom: 0in">NOTE: This option is only available
+		when the data source is a PS Query</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">From the menu, select:</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<H2 CLASS="western" STYLE="margin-left: 0.5in; font-size: 10pt">Home &gt;Reporting
+		Tools &gt;XMLPublisher   <B>&gt; </B>Query Report Scheduler</H2>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Select a Run Control ID or create a new
+		one</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Search for the Report to run from
+		<B>Report Name</B></P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">If necessary, select the <B>Template ID</B>
+		and <B>Template As Of Date</B></P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Click <U><B>Update Parameters</B></U>
+		to change the following parameters:</P>
+		<P STYLE="margin-bottom: 0in"><B>	…</B></P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Click on the Run button for the Process
+		Scheduler Request page.</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Ensure the Process Scheduler Request
+		page has these values:</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<UL>
+			<LI><P STYLE="margin-bottom: 0in">Server Name must be <B>PSUNX</B>.</P>
+			<LI><P STYLE="margin-bottom: 0in">Type must be <B>Web</B></P>
+			<LI><P STYLE="margin-bottom: 0in">Format should be <B>PDF</B></P>
+			<LI><P STYLE="margin-bottom: 0in">Distribution may be set but is
+			generally left blank</P>
+		</UL>
+		<P STYLE="margin-left: 0.5in; margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Click OK to submit the report to be
+		run.</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in"><A NAME="ProcessMonitorInformation"></A>
+		<FONT FACE="Arial, serif"><B>Process Monitor
+		Information:</B></FONT></P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">To view the status of any job you are
+		running:</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<H2 CLASS="western" STYLE="margin-left: 0.5in; font-size: 10pt">Home &gt; PeopleTools
+		&gt; Process Monitor <B>or select the</B> Process Monitor link <B>next
+		to the Run button</B> 
+		</H2>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Or click <U><B>Process Monitor</B></U>
+		from the Page you ran the process.</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Ensure the Process Monitor panel has
+		these values:</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<UL>
+			<LI><P STYLE="margin-bottom: 0in">Your <B>Operator ID</B> is in the
+			Operator ID box.</P>
+		</UL>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Click on <B>Refresh</B> to monitor the
+		progress of your job.</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">When the Run Status indicates <B>Success
+		(or Error) </B>and the Distribution Status indicates<B> Posted, </B>your
+		job has completed.</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Click the <B>Details</B> link next to
+		your process to view the output</P>
+		<P STYLE="margin-bottom: 0in">	Information for the run parameters
+		will be found by clicking the <B>Parameters</B> link</P>
+		<P STYLE="margin-left: 0.5in; margin-bottom: 0in">Information for the
+		run stats will be found by clicking the <B>Messages Log</B> link</P>
+		<P STYLE="margin-left: 0.5in; margin-bottom: 0in">Information for the
+		run stats will be found by clicking the <B>View Log/Trace</B> link
+		then click on the <B>SQR_&lt;process name&gt;_&lt;instance id&gt;.log</B>
+		file</P>
+		<P STYLE="margin-left: 0.5in; margin-bottom: 0in">Information for the
+		output from your process will be found by clicking the View Log/Trace
+		link then click on the <B>&lt;processname&gt;_&lt;instance id&gt;.out</B>
+		file 
+		</P>
+		<P STYLE="margin-left: 0.5in; margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in"><FONT FACE="Arial, serif"><B>Report
+		Manager Information:</B></FONT></P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">To view the report output of the job
+		you are running:</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<H2 CLASS="western" STYLE="margin-left: 0.5in; font-size: 10pt">Home &gt; Reporting
+		Tools &gt; Report Manager 
+		</H2>
+		<H2 CLASS="western"></H2>
+		<H2 CLASS="western" STYLE="font-size: 10pt"><B>Or select the</B> Report Manager  link <B>next
+		to the Run button on the Query Report Scheduler page</B></H2>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Select your <B>User ID </B>
+		</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Select <B>XML Publisher</B> as the <U>Type</U></P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Enter the time period in which the
+		report was run in the <U>Last</U> parameter section.</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Click <B>Refresh</B> to view the
+		reports</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">Click <B>Details</B> next to the report
+		name you would like to see</P>
+		<P STYLE="margin-bottom: 0in"><BR>
+		</P>
+		<P STYLE="margin-bottom: 0in">In the File List section click on the
+		<U>report name</U> to see the output</P>
+            	
+                <br/>    
+            </span>
+        </span>
+
+                
+        <div tal:replace="structure provider:plone.belowcontentbody" />
+            
+        
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+Changelog
+=========
+
+0.3
+---
+
+* Added QueryInstructions type.
+
+0.2
+---
+
+* Renamed SetupDocumentFolder to SetupDocument.  Added
+  BusinessRequirementsDocument type.
+
+0.1.2
+-----
+
+* removed AnnotationStorage on title and description and
+  removed ATFieldProperty.
+  [Nathan Van Gheem]
+  
+
+0.1
+---
+
+* Initial release

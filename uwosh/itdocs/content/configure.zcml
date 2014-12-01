@@ -1,0 +1,103 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="uwosh.itdocs">
+
+    <!-- configure your content components here -->
+
+    <!-- -*- extra stuff goes here -*- -->
+
+    <class class=".runinstruction.RunInstruction">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.IRunInstruction"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.IRunInstruction"
+            />
+    </class>
+    
+    <class class=".systeminstruction.SystemInstruction">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.ISystemInstruction"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.ISystemInstruction"
+            />
+    </class>
+
+    <class class=".projectmigrationrequest.ProjectMigrationRequest">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.IProjectMigrationRequest"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.IProjectMigrationRequest"
+            />
+    </class>
+
+    <class class=".componentinstruction.ComponentInstruction">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.IComponentInstruction"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.IComponentInstruction"
+            />
+    </class>
+    
+    <class class=".workrequesttype.WorkRequestType">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.IWorkRequestType"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.IWorkRequestType"
+            />
+    </class>
+
+    <class class=".meetingnotes.MeetingNotes">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.IMeetingNotes"
+            />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.IMeetingNotes"
+            />
+    </class>
+  
+    <class class=".setupdocument.SetupDocument">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.ISetupDocument"
+        />
+    </class>
+
+    <class class=".businessrequirementsdocument.BusinessRequirementsDocument">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.IBusinessRequirementsDocument"
+        />
+        <require
+            permission="cmf.ModifyPortalContent"
+            set_schema="..interfaces.IBusinessRequirementsDocument"
+        />
+    </class>
+
+    <class class=".queryinstructions.QueryInstructions">
+        <require
+            permission="zope2.View"
+            interface="..interfaces.IQueryInstructions"
+        />
+    </class>
+    
+    
+
+</configure>
